@@ -50,7 +50,7 @@ import com.vanniktech.maven.publish.JavadocJar
 mavenPublishing {
 
     configure(new JavaLibrary(new JavadocJar.Javadoc(), true))
-    coordinates("io.github.ly1806620741", "test-support", "0.0.1-SNAPSHOT")
+    coordinates("io.github.ly1806620741", "test-support", "0.0.1")
     pom {
         name = "test support"
         description = "A tools for test support"
