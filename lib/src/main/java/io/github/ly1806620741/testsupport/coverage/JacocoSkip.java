@@ -1,4 +1,4 @@
-package io.ly1806620741;
+package io.github.ly1806620741.testsupport.coverage;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +19,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 @Slf4j
-public class JacocoSkipTest {
+public class JacocoSkip {
 
     static String basePackage = "io.ly1806620741";
 
@@ -72,7 +72,7 @@ public class JacocoSkipTest {
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         if (cl == null) {
-            cl = JacocoSkipTest.class.getClassLoader();
+            cl = JacocoSkip.class.getClassLoader();
         }
 
         Set<String> classNames = new HashSet<>();
