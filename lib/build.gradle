@@ -44,7 +44,12 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+//https://vanniktech.github.io/gradle-maven-publish-plugin/central/#__tabbed_4_2
 mavenPublishing {
+
+    configure(new JavaLibrary(new JavadocJar.Javadoc(), true))
     coordinates("io.github.ly1806620741", "test-support", "0.0.1-SNAPSHOT")
     pom {
         name = "test support"
