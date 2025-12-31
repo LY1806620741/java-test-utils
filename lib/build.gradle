@@ -8,6 +8,8 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+    id 'maven-publish'
+    id("io.freefair.lombok") version "9.1.0"
 }
 
 repositories {
