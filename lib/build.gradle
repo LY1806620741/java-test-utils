@@ -8,9 +8,8 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
-    id 'maven-publish'
+    id "com.vanniktech.maven.publish" version "0.35.0"
     id("io.freefair.lombok") version "9.1.0"
-    id 'signing'
 }
 
 repositories {
@@ -45,32 +44,31 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'io.github.ly1806620741'
-            artifactId = 'test-support'
-            version = '0.0.1'
-
-            from components.java
+mavenPublishing {
+    coordinates("io.github.ly1806620741", "test-support", "0.0.1-SNAPSHOT")
+    pom {
+        name = "test support"
+        description = "A tools for test support"
+        inceptionYear = "2025"
+        url = "https://github.com/LY1806620741/java-test-utils/"
+        licenses {
+        license {
+            name = "The Apache License, Version 2.0"
+            url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+        }
+        developers {
+        developer {
+            id = "LY1806620741"
+            name = "Aiden Huang"
+            url = "https://github.com/LY1806620741/"
+        }
+        }
+        scm {
+            url = "https://github.com/LY1806620741/java-test-utils/"
+            connection = "scm:git:git://github.com/LY1806620741/java-test-utils.git"
+            developerConnection = "scm:git:ssh://git@github.com/LY1806620741/java-test-utils.git"
         }
     }
-    repositories {
-        maven {
-            // Sonatype OSSRH 的发布地址
-            def releasesRepoUrl = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
-            def snapshotsRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-
-            // 认证信息，从环境变量或 gradle.properties 文件中读取，不要硬编码！
-            credentials {
-                username = project.findProperty('ossrhUsername') ?: System.getenv('OSSRH_USERNAME')
-                password = project.findProperty('ossrhPassword') ?: System.getenv('OSSRH_PASSWORD')
-            }
-        }
-    }
-}
-
-signing {
-    sign publishing.publications.mavenJava
 }
