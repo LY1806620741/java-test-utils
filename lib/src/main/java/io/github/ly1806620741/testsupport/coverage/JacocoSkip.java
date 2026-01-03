@@ -21,7 +21,7 @@ import java.util.jar.JarFile;
 @Slf4j
 public class JacocoSkip {
 
-    static String basePackage = "io.ly1806620741";
+    public static String basePackage = "io.ly1806620741";
 
     public void doCover() throws IOException, ClassNotFoundException {
         List<Class<?>> classes = listAllLoanClasses();
